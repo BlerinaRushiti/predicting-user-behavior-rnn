@@ -1,20 +1,20 @@
 # Parashikimi i Sjelljes së Përdoruesve duke Përdorur Machine Learning dhe LSTM
-Ky punim paraqet implementimin dhe eksperimentet për parashikimin e ndërveprimit pasues të përdoruesve bazuar në sekuencat e ndërveprimeve të mëparshme në një dataset e-commerce.
-Në këtë punim është përdorur dataset-i **E-commerce Behavior Data from Multi Category Store**, ndërsa për eksperimentet është përdorur skedari **2019-Oct.csv** nga i cili janë përzgjedhur 6,000,000 regjistime.
+Ky projekt paraqet implementimin dhe eksperimentet për parashikimin e ndërveprimit pasues të përdoruesve bazuar në sekuencat e ndërveprimeve të mëparshme në një dataset e-commerce.
+Në këtë projekt është përdorur dataset-i **E-commerce Behavior Data from Multi Category Store**, ndërsa për eksperimentet është përdorur skedari **2019-Oct.csv** nga i cili janë përzgjedhur 6,000,000 regjistime.
 Ndërveprimet e analizuara janë:
 - view
 - cart
 - purchase
 Për parashikimin e ndërveprimit pasues janë krijuar sekuenca me gjatësi pesë, ku pesë ndërveprimet e mëparshme përdoren për të parashikuar ndërveprimin e radhës.
-Në punim janë implementuar dhe krahasuar tre modele:
+Në projekt janë implementuar dhe krahasuar tre modele:
 - Logistic Regression
 - Decision Tree
 - Long Short-Term Memory (LSTM)
 Gjithashtu është analizuar ndikimin i pabalancimit të klasave dhe është përdorur Random UnderSampling për balancimin e të dhënave të trajnimit.
 
  ## Dataset-i
- Në këtë punim është përdorur dataset-i **E-commerce Behavior Data from Multi Category Store** i publikuar në Kaggle nga mkechinov.
- Për eksperimentet është përdorur skedari `2019-Oct.csv`. Për shkak të madhësisë së dataset-it origjinal, në këtë punim janë përdorur 6,000,000 regjistime, të lexuara në mënyrë të ndarë përmes chunks.
+ Në këtë projekt është përdorur dataset-i **E-commerce Behavior Data from Multi Category Store** i publikuar në Kaggle nga mkechinov.
+ Për eksperimentet është përdorur skedari `2019-Oct.csv`. Për shkak të madhësisë së dataset-it origjinal, në këtë projekt janë përdorur 6,000,000 regjistime, të lexuara në mënyrë të ndarë përmes chunks.
 
  Dataset-i përmban 9 kolona kryesore:
  - event_time - koha e ndërveprimit
@@ -61,7 +61,7 @@ Kjo shpërndarje tregon një pabalancim të konsiderueshëm ndërmjet klasave, k
 ## Përgatitja e të Dhënave Sekuenciale
 Për të mundësuar parashikimin e ndërveprimit pasues të përdoruesit, ndërveprimet u organizuan në formë sekuencash bazuar në user_session.
 Pas analizës së sesioneve, u identifikuan 1,289,469 sesione unike. Gjatësia mesatare e një sesioni ishte 4.65 ndërveprime, ndërsa 309,428 sesione përmbanin të paktën 6 ndërveprime dhe mund të përdoreshin për krijimin e sekuencave.
-Në këtë punim u përdor një gjatësi sekuence prej 5 ndërveprimesh. Kjo do të thotë se pesë ndërveprimet e mëparshme të një përdoruesi u përdorën si hyrje për të parashikuar ndërveprimin pasues.
+Në këtë projekt u përdor një gjatësi sekuence prej 5 ndërveprimesh. Kjo do të thotë se pesë ndërveprimet e mëparshme të një përdoruesi u përdorën si hyrje për të parashikuar ndërveprimin pasues.
 Në total u krijuan 2,360,318 sekuenca. Të dhënat e hyrjes `X` kanë formën: `(2,360,318, 5)`, ndërsa variabla objektive `y` ka formën: `(2,360,318, )`
 Çdo sekuencë përfaqëson pesë ndërveprime të njëpasnjëshme, ndërsa vlera e objektivit përfaqëson ndërveprimin që vjen menjëherë pas tyre.
 Kodimi i përdorur për ndërveprimet ishte:
