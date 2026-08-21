@@ -136,11 +136,13 @@ Në krahasim me Logistic Regression dhe LSTM, Decision Tree tregoi performancë 
 ### Model Comparison Before Balancing
 
 Rezultatet para balancimit treguan se të tre modelet kishin Accuracy të lartë, me rezultate shumë të afërta:
+
 | Model | Accuracy | Macro F1 |
 |---|---:|---:|
 | Logistic Regression | 95.41% | 0.3614 |
 | Decision Tree | 95.90% | 0.4728 |
 | LSTM | 95.91% | 0.4571 |
+
 Megjithëse Accuracy ishte mbi 95% për të tre modelet, Macro F1 ishte dukshëm më i ulët. Kjo tregon se Accuracy ishte ndikuar nga dominimi i klasës `view` dhe nuk e pasqyronte plotësisht performancën e modeleve në klasat `cart` dhe `purchase`.
 
 ### Confusion Matrix Before Balancing
@@ -150,18 +152,22 @@ Analiza tregoi se shumica e rasteve reale të klasave `cart` dhe `purchase` klas
 ## Class Balancing – Random UnderSampling
 Për shkak të pabalancimit të konsiderueshëm të klasave në të dhënat e trajnimit, u aplikua metoda Random UnderSampling. Qëllimi i këtij procesi ishte reduktimi i dominimit të klasës shumicë `view` dhe krijimi i një shpërndarjeje më të ekuilibruar të klasave gjatë trajnimit.
 Para balancimit, të dhënat e trajnimit përmbanin:
+
 | Event | Count | Percentage |
 |---|---:|---:|
 | view | 1,827,167 | 96.76% |
 | cart | 31,169 | 1.65% |
 | purchase | 29,917 | 1.58% |
+
 Me anë të Random UnderSampling, numri i mostrave të klasës shumicë `view` u reduktua për t'u përshtatur me klasën më të vogël `purchase`.
 Pas balancimit, secila klasë përmbante 29,917 mostra:
+
 | Event | Count | Percentage |
 |---|---:|---:|
 | view | 29,917 | 33.33% |
 | cart | 29,917 | 33.33% |
 | purchase | 29,917 | 33.33% |
+
 Si rezultat, madhësia e të dhënave të trajnimit u reduktua nga 1,888,253 në 89,751 sekuenca.
 Të dhënat e testimit nuk u balancuan dhe mbetën të pandryshuara, në mënyrë që performanca e modeleve të vlerësohej mbi shpërndarjen reale të të dhënave të testimit.
 Balancimi u aplikua vetëm në të dhënat e trajnimit.
@@ -213,21 +219,25 @@ Recall sipas klasave ishte:
 Decision Tree arriti rezultatet më të larta të përgjithshme ndërmjet tre modeleve në skenarin pas balancimit.
 
 ### Model Comparison After Balancing
+
 | Model | Accuracy | Weighted F1 | Macro F1 |
 |---|---:|---:|---:|
 | Logistic Regression | 90.43% | 92.35% | 0.5122 |
 | Decision Tree | 91.76% | 93.19% | 0.5540 |
 | LSTM | 91.58% | 93.09% | 0.5518 |
+
 Rezultatet tregojnë se Decision Tree kishte performancën më të lartë të përgjithshme pas balancimit, ndërsa LSTM ishte shumë afër tij.
 Në krahasim me skenarin para balancimit, të tre modelet patën ulje të Accuracy, por përmirësuan performancën në klasat më pak të përfaqësuara.
 
 ### Minority Class Recall
 Balancimi ndikoi dukshëm në Recall të klasave `cart` dhe `purchase`.
+
 | Model | Cart Recall Before | Cart Recall After | Purchase Recall Before | Purchase Recall After |
 |---|---:|---:|---:|---:|
 | Logistic Regression | 0.05 | 0.47 | 0.01 | 0.51 |
 | Decision Tree | 0.11 | 0.51 | 0.16 | 0.56 |
 | LSTM | 0.08 | 0.52 | 0.15 | 0.55 |
+
 Këto rezultate tregojnë se Random UnderSampling ka përmirësuar ndjeshëm aftësinë e modeleve për të identifikuar ndërveprimet `cart` dhe `purchase`.
 
 ### Confusion Matrix After Balancing
@@ -237,6 +247,7 @@ Në veçanti, për klasën `purchase`, Decision Tree klasifikoi saktë 4,930 ras
 
 ### Final Results
 Krahasimi përfundimtar u realizua duke analizuar Accuracy dhe Macro F1-Score para dhe pas balancimit të klasave.
+
 | Model | Accuracy Before | Accuracy After | Macro F1 Before | Macro F1 After |
 |---|---:|---:|---:|---:|
 | Logistic Regression | 95.41% | 90.43% | 0.3614 | 0.5122 |
