@@ -1,4 +1,4 @@
-# Parashikimi i Sjelljes së Përdoruesve duke Përdorur Machine Learning dhe LSTM
+# Parashikimi i Sjelljes së Përdoruesve duke Përdorur RNN/LSTM
 Ky projekt paraqet implementimin dhe eksperimentet për parashikimin e ndërveprimit pasues të përdoruesve bazuar në sekuencat e ndërveprimeve të mëparshme në një dataset e-commerce.
 Në këtë projekt është përdorur dataset-i **E-commerce Behavior Data from Multi Category Store**, ndërsa për eksperimentet është përdorur skedari **2019-Oct.csv** nga i cili janë përzgjedhur 6,000,000 regjistime.
 Ndërveprimet e analizuara janë:
